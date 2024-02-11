@@ -1,0 +1,306 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  max-width: 100%;
+  overflow-x: hidden;
+}
+
+body {
+  overflow-x: hidden;
+  max-width: 100%;
+}
+
+.main {
+  width: 100%;
+  min-height: 100vh;
+  background: #151515;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+  letter-spacing: 1.2px;
+  line-height: 40px;
+  font-size: 28px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.first-par {
+  padding: 0 12px 8px 12px;
+}
+
+.second-par {
+  padding: 0 12px 52px 12px;
+}
+
+.info {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  padding: 120px 60px;
+}
+
+.valentine-contract {
+  position: relative;
+  width: fit-content;
+  font-size: 16px;
+  margin: 0 auto;
+
+  img {
+    height: 680px;
+  }
+}
+
+.valentine-content {
+  position: absolute;
+  top: 75px;
+  left: 110px;
+  color: #333;
+  line-height: 26px;
+  width: 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  p {
+    color: #e5624b;
+    font-weight: 700;
+    font-size: 20px;
+    text-decoration: underline;
+    letter-spacing: 1.8px;
+  }
+
+  ul {
+    list-style-type: none;
+    font-weight: 700;
+  }
+
+  button {
+    width: fit-content;
+    margin: 0 auto;
+    background: #ff735b;
+    outline: none;
+    border: none;
+    padding: 12px 16px;
+    width: 220px;
+    border-radius: 20px;
+    color: white;
+    font-weight: 700;
+    font-family: 'Roboto', sans-serif;
+    letter-spacing: 1.9px;
+    position: absolute;
+    bottom: -50px;
+    left: 80px;
+    cursor: pointer;
+
+    &:hover {
+      background: #ff8670;
+    }
+  }
+}
+
+#signature-pad {
+  border: 2px solid #333;
+  border-radius: 5px;
+  position: relative;
+  display: block;
+  width: 300px;
+  height: 60px;
+}
+
+@media (max-width: 1200px) {
+  .info {
+    padding: 40px 60px;
+  }
+}
+
+@media (max-width: 720px) {
+  .valentine-contract {
+    img {
+      width: 500px;
+      height: 680px;
+    }
+  }
+
+  .valentine-content {
+    left: 100px;
+
+    p {
+      font-size: 18px;
+    }
+
+    ul {
+      font-size: 14px;
+    }
+
+    button {
+      left: 45px;
+    }
+  }
+}
+
+@media (max-width: 510px) {
+  .info {
+    padding: 40px 12px;
+  }
+
+  .first-par,
+  .second-par {
+    font-size: 22px;
+    text-align: center;
+    display: block;
+    width: 250px !important;
+    margin: 0 auto;
+  }
+
+  .valentine-contract {
+    img {
+      width: 440px;
+      height: 680px;
+    }
+  }
+
+  .valentine-content {
+    left: 70px;
+
+    p {
+      font-size: 18px;
+    }
+
+    ul {
+      font-size: 14px;
+    }
+
+    button {
+      left: 45px;
+    }
+  }
+}
+
+button {
+  transition: 0.2s;
+  cursor: pointer;
+}
+
+.buttons-final {
+  margin: 0 auto;
+  margin-top: 36px;
+  text-align: center;
+  position: relative;
+  z-index: 999;
+
+  button {
+    display: inline-block;
+    outline: none;
+    border: none;
+    padding: 12px 32px;
+    border-radius: 20px;
+    font-family: 'Roboto', sans-serif;
+    background: #ff735b;
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1.9px;
+    font-size: 22px;
+
+    &:disabled {
+      opacity: 0.5;
+      pointer-events: none;
+    }
+
+    &:hover {
+      background: #ff8670;
+    }
+  }
+
+  p {
+    font-size: 12px;
+  }
+
+  .love-you-par {
+    font-size: 48px;
+    color: #ff735b;
+    padding-bottom: 24px;
+    transition: 0.2s;
+    opacity: 0;
+    visibility: hidden;
+    height: 0px;
+    transform: translateY(-36px);
+
+    &.active {
+      animation: animate-love-text 1.5s;
+      animation-fill-mode: forwards;
+    }
+  }
+}
+
+@media (max-width: 450px) {
+  .love-you-par {
+    font-size: 40px !important;
+  }
+}
+
+@keyframes animate-love-text {
+  from {
+    visibility: hidden;
+    opacity: 0;
+  }
+  to {
+    visibility: visible;
+    opacity: 1;
+  }
+}
+
+#heart-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.heart {
+  position: absolute;
+  width: 20px;
+  height: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  opacity: 0;
+}
+
+.heart:before,
+.heart:after {
+  position: absolute;
+  content: '';
+  left: 50px;
+  top: 0;
+  width: 50px;
+  height: 80px;
+  background: red;
+  border-radius: 50px 50px 0 0;
+  transform: rotate(-45deg);
+  transform-origin: 0 100%;
+}
+
+// .heart:before {
+//   left: 0;
+//   transform: rotate(-45deg);
+//   transform-origin: 0 100%;
+// }
+
+.heart:after {
+  left: 0;
+  transform: rotate(45deg);
+  transform-origin: 100% 100%;
+}
+
+@keyframes fall {
+  to {
+    transform: translateY(100vh) translateX(-50%);
+    opacity: 1;
+  }
+}
