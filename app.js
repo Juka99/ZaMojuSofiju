@@ -7,7 +7,14 @@ document.addEventListener('DOMContentLoaded', function () {
   ctx.strokeStyle = '#222222';
   ctx.lineWidth = 2;
 
+  var isAnimating = false; // Flag to track animation state
+
   submitButton.addEventListener('click', function () {
+    if (isAnimating) return; // Exit if an animation is already in progress
+    isAnimating = true; // Set flag to true as animation starts
+
+    var heartsCount = 0; // Counter to track the number of hearts removed
+
     for (let i = 0; i < 100; i++) {
       // Create 100 hearts
       const heart = document.createElement('div');
@@ -25,10 +32,14 @@ document.addEventListener('DOMContentLoaded', function () {
       // Remove heart after animation to clean up the DOM
       heart.addEventListener('animationend', function () {
         heart.remove();
+        heartsCount++;
+        if (heartsCount === 100) {
+          isAnimating = false; // Reset flag when all hearts have finished animating
+        }
       });
-
-      lovePar.classList.add('active');
     }
+
+    lovePar.classList.add('active');
   });
 
   var drawing = false;
